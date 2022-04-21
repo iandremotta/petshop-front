@@ -1,6 +1,8 @@
 import { AuthService } from './services/auth.service';
 import { DataService } from './services/data.service';
 import { MaskDirective } from './directives/mask.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { FramePageComponent } from './pages/master/frame.page';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ProductCardComponent } from './components/store/product-card/product-card.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/shared/loading/loading.component';
+import { ProfilePageComponent } from './pages/account/profile-page/profile-page.component';
 
 
 
@@ -33,13 +36,16 @@ import { LoadingComponent } from './components/shared/loading/loading.component'
     CartPageComponent,
     FramePageComponent,
     ProductCardComponent,
-    LoadingComponent
+    LoadingComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [DataService, AuthService],
   bootstrap: [AppComponent]

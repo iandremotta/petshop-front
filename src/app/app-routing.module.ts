@@ -1,3 +1,5 @@
+import { ProfilePageComponent } from './pages/account/profile-page/profile-page.component';
+import { AuthService } from './services/auth.service';
 import { ResetPasswordPageComponent } from './pages/account/reset-password-page/reset-password-page.component';
 import { SignupPageComponent } from './pages/account/signup-page/signup-page.component';
 import { PetsPageComponent } from './pages/account/pets-page/pets-page.component';
@@ -10,13 +12,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '', component: FramePageComponent, children: [
+    path: '', component: FramePageComponent,
+    children: [
       {
         path: '', component: ProductsPageComponent
       },
       {
+        canActivate: [AuthService],
         path: 'cart', component: CartPageComponent
-      }
+      },
     ]
   },
   {
@@ -25,12 +29,16 @@ const routes: Routes = [
     children:
       [
         {
+          canActivate: [AuthService],
           path: 'pets', component: PetsPageComponent
         }
       ]
   },
   {
     path: 'login', component: LoginPageComponent,
+  },
+  {
+    path: 'profile', component: ProfilePageComponent,
   },
   {
     path: 'signup', component: SignupPageComponent,
